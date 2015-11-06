@@ -16,3 +16,7 @@
 
 * As you make code changes, frequently commit and push to GitHub.
 * At the end of the day, once you've finished the **challenges from both modules**, make a pull request from your fork to the original repo.
+
+----------
+
+![screencapture-file-users-cameronjacoby-documents-coding-sf-wdi-24-ajax-book-app-index-html-1446782478325](https://cloud.githubusercontent.com/assets/7833470/10989235/997e6de8-83f9-11e5-9267-5e65839a01ab.png)
