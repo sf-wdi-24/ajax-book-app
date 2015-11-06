@@ -104,7 +104,7 @@ $(function() {
       // find the book's id (stored in HTML as `data-id`)
       var bookId = $(this).closest('.book').attr('data-id');
 
-      // find the book to update by its id
+      // find the book to delete by its id
       var bookToDelete = allBooks.filter(function (book) {
         return book._id == bookId;
       })[0];
