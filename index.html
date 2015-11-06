@@ -22,32 +22,76 @@
         <br>
         <form id="create-book">
           <div class="form-group">
-            <input class="form-control" placeholder="Title" autofocus>
+            <input type="text" name="title" class="form-control" placeholder="Title" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="author" class="form-control" placeholder="Author">
+          </div>
+          <div class="form-group">
+            <input type="text" name="image" class="form-control" placeholder="Image">
+          </div>
+          <div class="form-group">
+            <input type="text" name="releaseDate" class="form-control" placeholder="Release Date">
           </div>
           <div class="form-group">
             <input type="submit" class="btn btn-block btn-primary" value="Save">
           </div>
         </form>
-        <div class="text-center" id="loading">
-          <img src="loading.gif" width="80">
-        </div>
         <br>
         <div id="books-list">
           
           <!-- handlebars template -->
           <script id="books-template" type="text/x-handlebars-template">
             {{#each books}}
-              <div class="row">
-                <div class="col-xs-4">
-                  <img src="{{image}}" class="img-responsive">
+              <div class="book" data-id="{{_id}}">
+                <div class="row">
+                  
+                  <!-- book image -->
+                  <div class="col-xs-4">
+                    <img src="{{image}}" class="img-responsive">
+                  </div>
+
+                  <!-- book details -->
+                  <div class="col-xs-8">
+                    <p><strong>Title:</strong> {{title}}</p>
+                    <p><strong>Author:</strong> {{author}}</p>
+                    <p><strong>Released:</strong> {{releaseDate}}</p>
+
+                    <!-- edit button to toggle form -->
+                    <a href="javascript:void(0)" class="btn btn-default btn-sm edit-book" data-toggle="collapse" data-target="#update-{{_id}}">
+                      <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </a>
+                    
+                    <!-- delete button -->
+                    <a href="javascript:void(0)" class="btn btn-default btn-sm delete-book">
+                      <span class="glyphicon glyphicon-trash"></span> Delete
+                    </a>
+                    
+                    <!-- form to update book -->
+                    <div class="collapse" id="update-{{_id}}">
+                      <br>
+                      <form class="update-book">
+                        <div class="form-group">
+                          <input type="text" name="title" class="form-control" placeholder="Title" value="{{title}}" autofocus>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" name="author" class="form-control" placeholder="Author" value="{{author}}">
+                        </div>
+                        <div class="form-group">
+                          <input type="text" name="image" class="form-control" placeholder="Image" value="{{image}}">
+                        </div>
+                        <div class="form-group">
+                          <input type="text" name="releaseDate" class="form-control" placeholder="Release Date" value="{{releaseDate}}">
+                        </div>
+                        <div class="form-group">
+                          <input type="submit" class="btn btn-block btn-default" value="Update">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-xs-8">
-                  <p><strong>Title:</strong> {{title}}</p>
-                  <p><strong>Author:</strong> {{author}}</p>
-                  <p><strong>Released:</strong> {{releaseDate}}</p>
-                </div>
+                <hr>
               </div>
-              <hr>
             {{/each}}
           </script>
         
