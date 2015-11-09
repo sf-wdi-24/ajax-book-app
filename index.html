@@ -18,9 +18,55 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h1 class="text-center">AJAX Book App</h1>
-        <br>
-        <div id="books-list"></div>
+        
+        <div class="row">
+          <p class="title">Book App
+          <span class="label label-default" id="add-book">Add Book</span></p>
+        </div>
+        <br><br>
+
+
+        <div class="col-xs-11" id="new-book-form">
+          <div class="form-group">
+            <input type="title" class="form-control" id="title-form" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <input type="author" class="form-control" id="author-form" placeholder="Author">
+          </div>
+          <div class="form-group">
+            <input type="image-url" class="form-control" id="image-url-form" placeholder="Image URL">
+          </div>
+          <div class="form-group">
+            <input type="release-date" class="form-control" id="release-date-form" placeholder="Release Date">
+          </div>
+          <button type="submit" class="btn btn-info" id="new-book-form-submit">Submit</button>
+        <br><br>
+        </div>
+        <img src="https://media.giphy.com/media/112VS6QqBw52Ks/giphy.gif" id="completegif">
+        
+
+        <div id="books-list">
+        <br><br>
+          <!-- handlebars template -->
+          <script id="books-list-template" type="text/x-handlebars-template">
+            {{#each book}}
+              <div class="row" id="book-row">
+                <div class="col-xs-4">
+                  <img src="{{image}}" id="book-image">
+                </div>
+                <div class="col-xs-7" id="book-info">
+                  <p><b>Title:</b> {{title}} <br> <b>Author:</b> {{author}} <br> <b>Release Date:</b> {{releaseDate}}</p>
+                  <a href='http://www.goodreads.com/search?utf8=✓&query="{{title}}"'>
+                  <div class="glyphicon glyphicon-align-left"></div>
+                  </a>
+                  <div class="glyphicon glyphicon-pencil"></div>
+                  <div class="glyphicon glyphicon-remove"></div>
+                </div>
+              </div>
+              <br><br>
+            {{/each}}
+          </script>
+        </div> 
       </div>
     </div>
   </div>

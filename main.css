@@ -1,1 +1,32 @@
 /* put custom styles in this file */
+
+.title {
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+}
+
+#add-book {
+	font-size: 10px;
+	vertical-align: middle;
+}
+
+#book-image {
+	width: 100px;
+}
+
+#book-info {
+	font-size: 15px;
+}
+
+.glyphicon {
+	margin-right: 15px;
+}
+
+#new-book-form-submit {
+	width: 100%;
+}
+
+#completegif {
+	width: 87%;
+}
