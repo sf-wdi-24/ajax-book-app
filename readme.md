@@ -5,7 +5,7 @@
 ## Getting Started
 
 1. Fork this repo, and clone it into your `develop` folder on your local machine.
-2. Follow the challenges from the <a href="https://github.com/sf-wdi-24/modules/tree/master/week-03-resetful-server-express/day-01" target="_blank">CRUD and RESTful Resources</a> modules. By the end of the challenges, **a user should be able to:**
+2. Follow the challenges from the <a href="https://github.com/sf-wdi-24/modules/tree/master/week-03-restful-server-express/day-01" target="_blank">CRUD and RESTful Resources</a> modules. By the end of the challenges, **a user should be able to:**
   * See a list of all books
   * Create a new book
   * Read a book :)
