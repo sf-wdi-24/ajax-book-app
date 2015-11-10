@@ -19,12 +19,78 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">AJAX Book App</h1>
-        <br>
-        <div id="books-list"></div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <form id="create-book">
+          <div class="form-group">
+            <label for="title">Book Name</label>
+            <input class="form-control" type="text" name="title" placeholder="Book Name">
+          </div>
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input class="form-control" type="text" name="author" placeholder="Author">
+          </div>
+          <div class="form-group">
+            <label for="releaseDate">Release Date</label>
+            <input class="form-control" type="text" name="releaseDate" placeholder="Release Date">
+          </div>
+          <div class="form-group">
+            <label for ="image">Cover Image</label>
+            <input class="form-control" type="text" name="image" placeholder="Cover">
+          </div>
+          <div class="form-group">
+            <input class="btn" type="submit">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div id="books-list">
+          <script id="books-template" type="text/x-handlebars-template">
+          {{#each books}}
+          <div class="row">
+            <div class="col-md-3 data_id={{_id}}">
+              <img class="cover" src="{{image}}" class="img-responsive">
+            </div>
+            <div class="col-md-5">
+              <h2>Title: {{title}}</h2>
+              <h2>Author: {{author}}</h2>
+              <h2>Release Date: {{releaseDate}}</h2>
+            </div>
+            <div class="col-md-4">
+                  <div class="buttons">
+                    <button id="edit"><span class="glyphicon glyphicon-edit"></span></button>
+                    <button id="delete"><span class="glyphicon glyphicon-trash"></span></button>
+                  </div>
+                  <div class="update">
+                  <form id="update-book">
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="title" placeholder="Book Name">
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="author" placeholder="Author">
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="releaseDate" placeholder="Release Date">
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="image" placeholder="Cover">
+                    </div>
+                    <div class="form-group">
+                      <input class="btn" type="submit" name="submit">
+                    </div>  
+                  </form>
+                  </div>
+            </div>
+          </div> 
+        <hr>
+          {{/each}}
+          </script>
+      </div>
+    </div>  
   </div>
-  
   <!-- jquery -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
