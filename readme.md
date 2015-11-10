@@ -18,6 +18,18 @@
 While you're developing a library, treat it as a real-world project. As you run into issues with our API add them to a list of problems.
 
 You're required to keep a list of 5 issues which caused friction for you while using our API. An example could be "I found it difficult to find documentation on what was returned from the API".
+
+
+## API issues: 
+
+* API should handle a PUT without data
+
+* Hard to edit when other people are editing or deleting entries
+
+* Documentation- too much/ unclear what's important
+
+* You can't read books
+
                                                                                                                                                With your problems in hand, read <a href="https://github.com/gocardless/http-api-design" target="_blank">HTTP API Design Resources</a> and see if anything is covered in that github document.
 
 Prove to us you've read the document by including your list of 5 issues and any supporting references from the document in your submission pull request.

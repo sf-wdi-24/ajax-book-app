@@ -46,7 +46,27 @@ $(document).ready(function() {
 	// create form that allows edit book
 	$('#books-list').on('click', '.edit', function() {
 		var bookId = $(this).data('book-id');
-		console.log(bookId);
+		var book = booksCollection.find(function(book) {
+  			return book._id == bookId;
+		});
+		var newName = prompt('New book title:', book.title);
+		var newAuthor = prompt('New author:', book.author);
+		var newImage = prompt('New image:', book.image);
+		var newReleaseDate = prompt('New release date:', book.releaseDate);
+		$.ajax({
+			type: 'PUT',
+			url: 'https://super-crud.herokuapp.com/books/' + bookId,
+			data: {
+				title: newName,
+    			author: newAuthor,
+    			image: newImage,
+    			releaseDate: newReleaseDate
+    		},
+			success: function(data) {
+				console.log('Book has been edited!');
+			}
+		});
+		//console.log(bookId);
 	});
 	$('#books-list').on('click', '.delete', function() {
 		var bookId = $(this).data('book-id');
