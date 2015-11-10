@@ -29,7 +29,7 @@ $(function() {
 			addBookToPage(); //update new book to the Page
 		});
 	});
-	
+
 	$("#books-list").on("click", ".edit-button", function() {
 		var getId = $(this).attr("id");
 		var bookToBeEdited = bookStore.filter(function(book) {
@@ -47,7 +47,7 @@ $(function() {
 				url: booksUrl + "/" + getId,
 				data: editedBook,
 				success: function(data) {
-					bookStore.splice(bookToBeEditedIndex, 1, data);
+					bookStore = bookStore.splice(bookToBeEditedIndex, 1, data);
 					addBookToPage();
 				}
 			});
@@ -66,7 +66,7 @@ $(function() {
 			url: booksUrl + "/" + getId,
 			data: bookToBeDelete,
 			success: function(data) {
-				bookStore.splice(bookToBeDeleteIndex, 1, data);
+				bookStore = bookStore.splice(bookToBeDeleteIndex, 1);
 				addBookToPage();
 			}
 		});
