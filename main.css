@@ -1,1 +1,7 @@
-/* put custom styles in this file */
+.covers {
+	width: 200px;
+}
+
+.editDrop {
+	display:none;
+}
