@@ -45,7 +45,7 @@ $(function() {
 
   function deleteBook(book_id){
     $.ajax({
-      type: "DELTE",
+      type: "DELETE",
       url: 'https://super-crud.herokuapp.com/books/' + book_id,
       success: function (data) {
         console.log("DESTROYED!");
@@ -82,12 +82,10 @@ $(function() {
     }
   });
 
-  $('#delete-book-form-submit').click(function(){
-    console.log("delete");
+  $('#books-list').on('click', '#delete-book-form', function (e) {
+    e.preventDefault();
+    var id = e.currentTarget.attributes[2].nodeValue;
+    deleteBook(id);
   });
-
-  // $('#book-info').click('#delete-book-form-submit', function(){
-  //   console.log("delete book form");
-  // });
 
 });
