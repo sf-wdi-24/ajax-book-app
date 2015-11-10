@@ -1,1 +1,8 @@
 /* put custom styles in this file */
+img {
+	float: right;
+	margin: 10px;
+}
+#description {
+	margin-top: 30px;
+}
