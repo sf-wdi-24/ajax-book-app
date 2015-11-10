@@ -20,7 +20,25 @@
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">AJAX Book App</h1>
         <br>
+        <form id="form-group">
+
+          <input type="text" class="form-control" value="Title">
+          <input type="text" class="form-control" value="Author">
+          <input type="submit" value="Show books" class="btn btn-info">
+          <input type="submit" value="Create new book" class="btn btn-success">
+        </form>
         <div id="books-list"></div>
+        <script id="books-template" type="text/x-handlebars-template">
+          <div class="entry">
+            <div class="books">
+            {{#each allBooks}}
+              <div><img src="{{image}}"></div>
+              <h2>{{title}}</h2>
+              <div>{{author}}</div>
+            {{/each}}
+            </div>
+          </div>
+        </script>
       </div>
     </div>
   </div>
