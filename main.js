@@ -28,15 +28,32 @@ $(function() {
 	$("form").on("submit", function(event){
 		event.preventDefault();
 		var addedBook = $(this).serialize();
-		$.post(booksUrl, addedBook, function(newbook) {
-			bookStore.push(newbook); //add new book to bookStore
+		$.post(booksUrl, addedBook, function(data) {
+			bookStore.push(data); //add new book to bookStore
 			addBookToPage(); //update new book to the Page
 		});
 	});
 	$("#books-list").on("click", ".edit-button", function(){
 		var getId = $(this).attr("id");
 		console.log(getId);
-		$("#form"+ getId).toggle();
+		var $editForm = $("#form"+ getId);
+		console.log(booksUrl + "/" + getId + "/");
+		$editForm.toggle();
+		$("#books-list").on("submit", $editForm, function(event) {
+			event.preventDefault();
+			var edittedBook = $editForm.serialize();
+			document.getElementById("form" + getId).reset();
+			$.ajax({
+				type: "PUT",
+				url: booksUrl + "/" + getId + "/",
+				data: edittedBook,
+				sucess: function(data) {
+					bookStore.push(data);
+					addBookToPage();
+				}
+			});
+		});
+
 	});
 
 });
