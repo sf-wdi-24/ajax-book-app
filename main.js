@@ -49,6 +49,7 @@ $(function() {
       url: 'https://super-crud.herokuapp.com/books/' + book_id,
       success: function (data) {
         console.log("DESTROYED!");
+        getBooks();
       },
       error: function (error) {
         console.error(error);
@@ -56,7 +57,18 @@ $(function() {
     });
   }
 
-  //$('glyphicon.glyphicon-remove')
+  function updateBook(book_id, title, author, image, releaseDate){
+    $.ajax({
+      type: "PUT",
+      url: 'https://super-crud.herokuapp.com/books/' + book_id,
+      data: {title: title, author: author, image: image, releaseDate: releaseDate},
+      success: function (data) {
+        console.log("UPDATED!");
+        $('#books-list').empty();
+        getBooks();
+      }
+    });
+  }
 
   $('#new-book-form-submit').click(function(){
   	var title = $('#title-form').val();
@@ -86,6 +98,17 @@ $(function() {
     e.preventDefault();
     var id = e.currentTarget.attributes[2].nodeValue;
     deleteBook(id);
+  });
+
+  $('#books-list').on('submit', '.update-book', function(e) {
+    e.preventDefault();
+    var title = $('#updateTitle').val();
+    var author = $('#updateAuthor').val();
+    var image = $('#updateImage').val();
+    var releaseDate = $('#updateReleaseDate').val();
+    var book_id = $('#book-row')[0].attributes[2].nodeValue;
+    updateBook(book_id, title, author, image, releaseDate);
+    $('#update-' + book_id).collapse('toggle');
   });
 
 });

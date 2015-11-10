@@ -45,7 +45,7 @@
         <img src="https://media.giphy.com/media/112VS6QqBw52Ks/giphy.gif" id="completegif">
         
 
-        <div id="books-list" data-id="{{_id}}">
+        <div id="books-list">
         <br><br>
           <!-- handlebars template -->
         <script id="books-list-template" type="text/x-handlebars-template">
@@ -73,19 +73,19 @@
                   <br>
                   <form class="update-book">
                     <div class="form-group">
-                      <input type="text" name="title" class="form-control" placeholder="Title" value="{{title}}">
+                      <input type="text" name="title" class="form-control" placeholder="Title" value="{{title}}" id="updateTitle">
                     </div>
                     <div class="form-group">
-                      <input type="text" name="author" class="form-control" placeholder="Author" value="{{author}}">
+                      <input type="text" name="author" class="form-control" placeholder="Author" value="{{author}}" id="updateAuthor">
                     </div>
                     <div class="form-group">
-                      <input type="text" name="image" class="form-control" placeholder="Image" value="{{image}}">
+                      <input type="text" name="image" class="form-control" placeholder="Image" value="{{image}}" id="updateImage">
                     </div>
                     <div class="form-group">
-                      <input type="text" name="releaseDate" class="form-control" placeholder="Release Date" value="{{releaseDate}}">
+                      <input type="text" name="releaseDate" class="form-control" placeholder="Release Date" value="{{releaseDate}}" id="updateReleaseDate">
                     </div>
                     <div class="form-group">
-                      <input type="submit" class="btn btn-block btn-default" value="Update" id="update-book-form-submit">
+                      <input type="submit" class="btn btn-block btn-default" value="Update" id="update-book">
                     </div>
                   </form>
                 </div>
