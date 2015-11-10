@@ -50,7 +50,7 @@
           <!-- handlebars template -->
           <script id="books-list-template" type="text/x-handlebars-template">
             {{#each book}}
-              <div class="row" id="book-row">
+              <div class="row" id="book-row" data-id="{{_id}}">
                 <div class="col-xs-4">
                   <img src="{{image}}" id="book-image">
                 </div>
@@ -59,8 +59,36 @@
                   <a href='http://www.goodreads.com/search?utf8=✓&query="{{title}}"'>
                   <div class="glyphicon glyphicon-align-left"></div>
                   </a>
-                  <div class="glyphicon glyphicon-pencil"></div>
-                  <div class="glyphicon glyphicon-remove"></div>
+                
+                  <!-- edit button to toggle form -->
+                  <a href="javascript:void(0)" class="edit-book" data-toggle="collapse" data-target="#update-{{_id}}">
+                    <div class="glyphicon glyphicon-pencil"></div>
+                  </a>
+                    
+                  <!-- delete button -->
+                  <div class="glyphicon glyphicon-remove" id="delete-book-form-submit"></div>
+                    
+                  <!-- form to update book -->
+                  <div class="collapse" id="update-{{_id}}">
+                    <br>
+                    <form class="update-book">
+                      <div class="form-group">
+                        <input type="text" name="title" class="form-control" placeholder="Title" value="{{title}}">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="author" class="form-control" placeholder="Author" value="{{author}}">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="image" class="form-control" placeholder="Image" value="{{image}}">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="releaseDate" class="form-control" placeholder="Release Date" value="{{releaseDate}}">
+                      </div>
+                      <div class="form-group">
+                        <input type="submit" class="btn btn-block btn-default" value="Update" id="update-book-form-submit">
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
               <br><br>

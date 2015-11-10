@@ -43,22 +43,27 @@ $(function() {
 	});
   }
 
+  function deleteBook(book_id){
+    $.ajax({
+      type: "DELTE",
+      url: 'https://super-crud.herokuapp.com/books/' + book_id,
+      success: function (data) {
+        console.log("DESTROYED!");
+      },
+      error: function (error) {
+        console.error(error);
+      }
+    });
+  }
+
+  //$('glyphicon.glyphicon-remove')
+
   $('#new-book-form-submit').click(function(){
   	var title = $('#title-form').val();
   	var author = $('#author-form').val();
   	var imageUrl = $('#image-url-form').val();
   	var releaseDate = $('#release-date-form').val();
   	addBook(title, author, imageUrl, releaseDate);
-  });
-
-  $('.glyphicon').mouseenter(function(){
-  	console.log("mouseover");
-  	//$('.glyphicon').css('color', "green");
-  });
-
-  $('.glyphicon').click(function(){
-  	console.log("in here");
-  	$(this).css('color', "green");
   });
 
   $('#add-book').mouseenter(function(){
@@ -76,5 +81,13 @@ $(function() {
     	$('#new-book-form').slideUp("slow");
     }
   });
+
+  $('#delete-book-form-submit').click(function(){
+    console.log("delete");
+  });
+
+  // $('#book-info').click('#delete-book-form-submit', function(){
+  //   console.log("delete book form");
+  // });
 
 });
