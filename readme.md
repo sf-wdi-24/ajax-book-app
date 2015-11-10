@@ -18,6 +18,18 @@
 While you're developing a library, treat it as a real-world project. As you run into issues with our API add them to a list of problems.
 
 You're required to keep a list of 5 issues which caused friction for you while using our API. An example could be "I found it difficult to find documentation on what was returned from the API".
+
+5 Things I learned while using the API: 
+
+1. I didn't finish, but I copied the solution and I took the time to read through the notes again and understand what the code means and what it does. 
+
+2. I found that going back and forth to edit the html page and js and going to Postman and the console could be a bit confusing at times. I am still trying to understand the concepts to fully understand how to incorporate them in the code. 
+
+3. It takes time to understand the API and what data it includes. 
+
+4. You need to investigate the data to find out what you actually want.  
+
+5. Working with APIs can be tricky. 
                                                                                                                                                With your problems in hand, read <a href="https://github.com/gocardless/http-api-design" target="_blank">HTTP API Design Resources</a> and see if anything is covered in that github document.
 
 Prove to us you've read the document by including your list of 5 issues and any supporting references from the document in your submission pull request.
