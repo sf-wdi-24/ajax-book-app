@@ -18,6 +18,24 @@
 While you're developing a library, treat it as a real-world project. As you run into issues with our API add them to a list of problems.
 
 You're required to keep a list of 5 issues which caused friction for you while using our API. An example could be "I found it difficult to find documentation on what was returned from the API".
+
+Feedback on API
+
+1) Dummy data
+
+At firts the auto refresh worked fine, but eventually the db seemed entirely hosed.
+
+2) PUT
+
+I really struggled with PUT b/c we had to dynamically find the ID of the book, , ie "find closest" which I couldn't get working. 
+
+3) Fail safe
+
+I was expecting some protection like "are you sure?" when you delete or a way to un-delete. 
+
+4) Documentation
+
+More API definition would have been nice. 
                                                                                                                                                With your problems in hand, read <a href="https://github.com/gocardless/http-api-design" target="_blank">HTTP API Design Resources</a> and see if anything is covered in that github document.
 
 Prove to us you've read the document by including your list of 5 issues and any supporting references from the document in your submission pull request.

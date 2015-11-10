@@ -65,19 +65,29 @@ $(document).ready(function(data) {
 		})[0];
 		// serialze form data
 
+		var updatedBook = $(this).serialize();
+
 		$.ajax({
-			type: 'PUT',
-			url: 'https://super-crud.herokuapp.com/books',
-			data: updatedBook,
-			success: function(data) {
-				allBooks.splice(allBooks.indexOf(bookToUpdate), 1, data);
-				console.log("Something was clicked!");
+				type: 'PUT',
+				url: 'https://super-crud.herokuapp.com/books',
+				+'/' + 'bookId';
+				data: updatedBook;
+				success: function(data) {
+					$('#title').val();
+					$('#author').val();
+					event.preventDefault();
 
-				// render all books to view
-				render();
-			}
-		});
+					console.log("Edit this book button was clicked, right?");
 
+					allBooks.splice(allBooks.indexOf(bookToUpdate), 1, data);
+
+					// My PUT function isn't being seen by the program.  It's being skipped. 
+
+					// render all books to view
+					render();
+				});
+
+		};
 	});
 });
 
