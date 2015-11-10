@@ -11,7 +11,7 @@ $(function() {
 	var template = Handlebars.compile(source);
 
 	function addBookToPage() {
-		$("#books-list").empty();
+		$("#books-list").empty(); // <<< must clear the book list then render new one
 		var bookHtml = template({
 			books: bookStore
 		});
