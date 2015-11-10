@@ -1,1 +1,7 @@
 /* put custom styles in this file */
+body {
+	background-color: #999;
+}
+.images {
+	width: 300px;
+}
