@@ -1,1 +1,13 @@
 /* put custom styles in this file */
+h1 {
+	color: #220D89;
+	font-size: 48px;
+}
+
+body {
+	background-color: #C68500;
+}
+
+.editBook {
+	display: none;
+}
