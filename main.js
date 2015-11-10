@@ -51,7 +51,7 @@ $submit_book.on('submit', function(event) {
 			event.preventDefault();
 			console.log('clicked this')
 			// get book id
-			var bookId = $(this).attr('data-id');
+			var bookId = $(this).attr('id');
 			console.log(bookId);
 
 			
@@ -65,12 +65,24 @@ $submit_book.on('submit', function(event) {
 			}
 		});
 	});
-
-	$('body').on('click', '.edit_book', function(event) {
+	$('body').on('click', '.edit_book',function(event) {
 		event.preventDefault();
-		console.log('edit button clicked');
-		var editFormId = $(this).attr('data-id');
-		console.log(editFormId);
+	})
+	$('body').on('submit', '.edit_book_form', function(event) {
+		event.preventDefault();
+		var editFormId = $(this).attr('id');
+		var updatedBook = $(this).serialize();
 
+		//ajax put request
+
+		$.ajax({
+			type: 'PUT',
+			url: siteUrl + '/' + editFormId,
+			data: updatedBook,
+			success: function(data) {
+				console.log('book updated');
+				createBooks();
+			}
+		})
 	})
 });
