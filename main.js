@@ -62,6 +62,27 @@ $(function() {
 		});
 	}
 
+	// Delete book function called by glyphicon trash handler
+	function deleteBook() {
+		event.preventDefault();
+		var id = $(this).attr('id');
+		$.ajax({
+			type: 'DELETE',
+			url: 'https://super-crud.herokuapp.com/books/' + id,
+			success: function (data) {
+				var index;
+				for (var i=0; i<bookResults.lenght; i++) {
+					if (bookResults[id] === id) {
+						index = i;
+					}
+				}
+				bookResults.splice(index, 1);
+				refresh();
+				console.log('deleted');
+			}
+		});
+	}
+
 	// Click handler for Submit button to add a book
   $('#newBook').on('submit', function(event) {
   	event.preventDefault();
@@ -72,6 +93,7 @@ $(function() {
   // Click handler for glyphicon pencil
   $('#books-list').on('click', '.glyphicon-pencil', putBook);
 
-
+  // Click handler for glyphicon trash
+  $('#books-list').on('click', '.glyphicon-trash', deleteBook);
 
 });
