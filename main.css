@@ -1,1 +1,4 @@
 /* put custom styles in this file */
+.cover {
+	max-height: 200px;
+}
