@@ -18,9 +18,72 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h1 class="text-center">AJAX Book App</h1>
+          <h1 class="text-center">AJAX Book App</h1>
         <br>
-        <div id="books-list"></div>
+          <h3 class='text-center'>Add New Book</h1>
+        <form id='submit_book'>
+          <div class='form-group'>  
+            <input type="text" class='form-control'name='title' placeholder='Enter book title'>
+          </div>
+          <div class='form-group'>
+            <input type="text" class='form-control'name='author' placeholder='Enter author'>
+          </div>
+          <div class='form-group'>
+            <input type="text" class='form-control'name='image' placeholder='Enter img url'>          
+          </div>
+          <div class='form-group'>
+            <input type="text" class='form-control'name='releaseDate' placeholder='Enter date released'>
+          </div>
+          <div class='form-group'>
+            <input type="submit" class='btn btn-primary' value='Add Book!'>
+          </div>
+        </form>
+        <div id="books-list">
+          <script type="text/x-handlebars-template" id='books_template'>
+          {{#each books}}
+          <div class="book" >
+            <div class='row'>
+              <div class='col-md-4'>
+              {{#if image}}
+                  <img src='{{image}}' class='img-responsive'>
+                  {{else}}
+                  <img src='http://i.imgur.com/I8TDLRq.jpg' class='img-responsive'>
+              {{/if}}
+                </div>
+
+                <div class='col-md-8'>
+                  <p><strong>Title:</strong> {{title}}</p>
+                  <p><strong>Author:</strong> {{author}}</p>
+                  <p><strong>Release Date:</strong> {{releaseDate}}</p>
+                  <a href='#' class='btn btn-primary btn-sm edit_book del_up' data-toggle='collapse' data-target='#edit{{_id}}'>Edit</a>
+                  <a href='#' class='btn btn-danger btn-sm delete_book del_up' data-id="{{_id}}">Delete</a>
+                  
+                  <div class='collapse' id='edit{{_id}}'>
+                    <form class='edit_book'>
+                      <div class='form-group'>  
+                        <input type="text" class='form-control'name='title' placeholder='Enter book title'>
+                      </div>
+                      <div class='form-group'>
+                        <input type="text" class='form-control'name='author' placeholder='Enter author'>
+                      </div>
+                      <div class='form-group'>
+                        <input type="text" class='form-control'name='image' placeholder='Enter img url'>          
+                      </div>
+                      <div class='form-group'>
+                        <input type="text" class='form-control'name='releaseDate' placeholder='Enter date released'>
+                      </div>
+                      <div class='form-group'>
+                        <input type="submit" class='btn btn-success' value='Update'>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            {{/each}}
+            </div>
+          </script>
+        </div>
       </div>
     </div>
   </div>
