@@ -37,8 +37,8 @@
             <input class="form-control" type="text" name="releaseDate" placeholder="Release Date">
           </div>
           <div class="form-group">
-            <label for ="cover">Cover Image</label>
-            <input class="form-control" type="text" name="cover" placeholder="Cover">
+            <label for ="image">Cover Image</label>
+            <input class="form-control" type="text" name="image" placeholder="Cover">
           </div>
           <div class="form-group">
             <input class="btn" type="submit">
@@ -51,7 +51,7 @@
           <script id="books-template" type="text/x-handlebars-template">
           {{#each books}}
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 data_id={{_id}}">
               <img class="cover" src="{{image}}" class="img-responsive">
             </div>
             <div class="col-md-5">
@@ -61,8 +61,8 @@
             </div>
             <div class="col-md-4">
                   <div class="buttons">
-                    <button data_id={{_id}} id="edit"><span class="glyphicon glyphicon-edit"></span></button>
-                    <button data_id={{_id}} id="delete"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button id="edit"><span class="glyphicon glyphicon-edit"></span></button>
+                    <button id="delete"><span class="glyphicon glyphicon-trash"></span></button>
                   </div>
                   <div class="update">
                   <form id="update-book">

@@ -7,15 +7,19 @@ $(function() {
   var source = $('#books-template').html();
   var template = Handlebars.compile(source);
   var booksCollection = [];
+  
+  var render = function () {
+  $('#books-list').empty();
+  var bookHTML = template({books: booksCollection});
+  $('#books-list').append(bookHTML);
+  };
 
   // Populate list with book data
   $.get("https://super-crud.herokuapp.com/books",
   	function(data) {
   		console.log(data);
   		booksCollection = data.books;
-		  var booksResults = data.books;
-		  var bookHTML = template({books: booksResults});
-  		$('#books-list').append(bookHTML);
+  		render();
   	});
 
   //Add a new Book to the list
@@ -26,13 +30,8 @@ $(function() {
   		newBook,
   		function(data) {
   			booksCollection.push(data);
-  			// Clear book list
-  			$('#books-list').empty();
-  			$(this).val(' ');
-  			//Re-render template with booksCollection
-  			booksResults = booksCollection;
-  			bookHTML = template({books: booksResults});
-  			$('#books-list').append(bookHTML);	
+  			// update book list
+  			render();
   		});
 
   });
@@ -40,27 +39,34 @@ $(function() {
   //Update book list
   $('#books-list').on("submit","#update-book", function(event){
   	event.preventDefault();
-  	var book_id1 = $(this).attr("data_id");
-  	console.log($(this).attr("data_id1"));
-  	var updateBook = $('#update-book').serialize();
-  	console.log(updateBook);
+  	var book_id = $(this).closest('.book').attr("data_id");
+  	var updateBook = $(this).serialize();
+
   	console.log("https://super-crud.herokuapp.com/books/"+book_id+"/");
   	$.ajax({
   		type: "PUT",
   		url: "https://super-crud.herokuapp.com/books/"+book_id+"/",
-  		data: {title: "Static", author:"Perm", releaseDate: "20", image:"https://cloud.githubusercontent.com/assets/7833470/10892121/866d27bc-8156-11e5-9810-62a875e36c27.jpg"}
+  		data: updateBook,
+  		success: function (data){
+  			render();
+  		}
   	});
   });
 
   //Delete Book from List
   $('#books-list').on("click","#delete", function(event){
-  	console.log("deletebuttonclicked");
+  	event.preventDefault();
   	var book_id = ($(this).attr("data_id"));
   	$.ajax({
   		type: "DELETE",
-  		url: "https://super-crud.herokuapp.com/books/"+book_id+"/",
-  		success: function(data){
-  			console.log("Book has been removed");
+  		url: "https://super-crud.herokuapp.com/books/"+book_id,
+  		success: function(){
+  			console.log("delete1");
+  			$('#books-list').empty();
+  			booksResults = data.books;
+  			bookHTML = template({books: booksResults});
+  			$('#books-list').append(bookHTML);	
+  			console.log("delete2");
   		},
   		error: function (error) {
     		console.error(error);
