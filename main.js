@@ -19,7 +19,9 @@ $(function() {
 	  $('#books-list').append(bookHTML);
   });
 
+  // Refresh function called by addBook, putBook, and deleteBook
 	function refresh (data) {
+		console.log('refreshing');
 		$('#books-list').empty();
 		$('input').val('');
 		// Rerender the data
@@ -27,33 +29,47 @@ $(function() {
 	  $('#books-list').append(bookHTML);
 	}
 
+	// Add book function called by submit button handler
 	function addBook(data) {
 		bookResults.push(data);
 		refresh();
 	}
 
-	function putBook(data) {
+	// Put book function called by glyphicon pencil handler
+	function putBook() {
 		event.preventDefault();
 		var id = $(this).attr('id');
 		$('#form' + id).toggle();
-		var url = 'https://super-crud.herokuapp.com/books/' + $(this)._id;
-		console.log(url);
-		// $.ajax({
-		// 	type: 'PUT',
-		// 	url: url,
-		// 	success: function (data) {
-		// 		// bookResults.splice()
-		// 	}
-		// });
+		$('#form' + id).on('submit', function(event) {
+			event.preventDefault();
+			var updatedBook = $(this).serialize();
+			$.ajax({
+				type: 'PUT',
+				url: 'https://super-crud.herokuapp.com/books/' + id,
+				data: updatedBook,
+				success: function (data) {
+					var index;
+					for (var i=0; i<bookResults.lenght; i++) {
+						if (bookResults[id] === id) {
+							index = i;
+						}
+					}
+					bookResults.splice(index, 1);
+					bookResults.push();
+					refresh();
+				}
+			});
+		});
 	}
 
+	// Click handler for Submit button to add a book
   $('#newBook').on('submit', function(event) {
   	event.preventDefault();
-  	console.log($(this).serialize());
 		var newBook = $(this).serialize();
 		$.post("https://super-crud.herokuapp.com/books/", newBook, addBook);
   });
 
+  // Click handler for glyphicon pencil
   $('#books-list').on('click', '.glyphicon-pencil', putBook);
 
 
