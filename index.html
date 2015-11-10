@@ -26,16 +26,6 @@
             </div>
           </form>
           <div id="books-list">
-
-
-<!--                        <button type="button" class="btn btn-primary" aria-label="Left Align">
-                       </button>
-                       <button type="button" class="btn btn-primary" aria-label="Left Align">
-                       </button>
- -->
-
-
-
             <script type="text/x-handlebars-template" id="template">
               {{#each books}}
                 <div class="row">
@@ -53,7 +43,7 @@
                         <span class="glyphicon glyphicon-trash btn btn-warning" id="{{_id}}" aria-hidden="true"></span>
                       </div>
                     </div>
-                    <form id="editBook">
+                    <form class="editBook" id="form{{_id}}">
                       <div class="form-group">
                         <input type="text" class="form-control form-group" name="title" placeholder="Title">
                         <input type="text" class="form-control form-group" name="author" placeholder="Author">

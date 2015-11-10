@@ -8,3 +8,6 @@ body {
 	background-color: #C68500;
 }
 
+.editBook {
+	display: none;
+}

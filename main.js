@@ -34,14 +34,17 @@ $(function() {
 
 	function putBook(data) {
 		event.preventDefault();
+		var id = $(this).attr('id');
+		$('#form' + id).toggle();
 		var url = 'https://super-crud.herokuapp.com/books/' + $(this)._id;
-		$.ajax({
-			type: 'PUT',
-			url: url,
-			success: function (data) {
-				bookResults.splice()
-			}
-		});
+		console.log(url);
+		// $.ajax({
+		// 	type: 'PUT',
+		// 	url: url,
+		// 	success: function (data) {
+		// 		// bookResults.splice()
+		// 	}
+		// });
 	}
 
   $('#newBook').on('submit', function(event) {
@@ -51,7 +54,7 @@ $(function() {
 		$.post("https://super-crud.herokuapp.com/books/", newBook, addBook);
   });
 
-  $('.glyphicon-pencil').click(putBook);
+  $('#books-list').on('click', '.glyphicon-pencil', putBook);
 
 
 
