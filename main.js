@@ -33,4 +33,10 @@ $(function() {
 			addBookToPage(); //update new book to the Page
 		});
 	});
+	$("#books-list").on("click", ".edit-button", function(){
+		var getId = $(this).attr("id");
+		console.log(getId);
+		$("#form"+ getId).toggle();
+	});
+
 });

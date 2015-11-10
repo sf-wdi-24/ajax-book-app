@@ -18,10 +18,18 @@
           <br>
           <form role="form" id="bookForm">
             <div class="form-group">
-              <input type="text" class="form-control" name="title" placeholder="Book title"><br>
-              <input type="text" class="form-control" name="author" placeholder="Author name"><br>
-              <input type="text" class="form-control" name="image" placeholder="Book cover image url"><br>
-              <input type="text" class="form-control" name="releaseDate" placeholder="Releae date"><br>
+              <input type="text" class="form-control" name="title" placeholder="Book title">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="author" placeholder="Author name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="image" placeholder="Book cover image url">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="releaseDate" placeholder="Releae date">
+            </div>
+            <div class="form-group">
               <input type="submit" class="btn btn-warning btn-block" id="save" value = "Save">
             </div>
           </form>
@@ -39,18 +47,26 @@
                   <p><b>Author:</b> {{author}}</p>
                   <p><b>Released:</b> {{releaseDate}}</p>
                   <div class="edit-holder">
-                    <button type="button" class="btn btn-default" aria-label="Left Align" id="edit">
+                    <button type="button" class="btn btn-default edit-button" aria-label="Left Align" id="{{_id}}">
                       <span class="glyphicon glyphicon-edit glyphicon-align-left" aria-hidden="true"></span> Edit
                     </button>
                     <button type="button" class="btn btn-default" aria-label="Left Align" id="delete">
                       <span class="glyphicon glyphicon-remove-circle glyphicon-align-left" aria-hidden="true"></span> Remove
                     </button>
-                    <form role="form" id="editForm">
+                    <form role="form" class="edit-form" id="form{{_id}}">
                       <div class="form-group">
                         <input type="text" class="form-control" name="title" placeholder="Book title">
+                      </div>
+                      <div class="form-group">
                         <input type="text" class="form-control" name="author" placeholder="Author name">
+                      </div>
+                      <div class="form-group">
                         <input type="text" class="form-control" name="image" placeholder="Book cover image url">
+                      </div>
+                      <div class="form-group">
                         <input type="text" class="form-control" name="releaseDate" placeholder="Releae date">
+                      </div>
+                      <div class="form-group">
                         <input type="submit" class="btn btn-warning btn-block" id="save" value = "Edit">
                       </div>
                     </form>
