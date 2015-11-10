@@ -11,6 +11,7 @@ $(function() {
 	var template = Handlebars.compile(source);
 
 	function addBookToPage() {
+		$("#books-list").empty();
 		var bookHtml = template({
 			books: bookStore
 		});
@@ -47,7 +48,7 @@ $(function() {
 				url: booksUrl + "/" + getId,
 				data: editedBook,
 				success: function(data) {
-					bookStore = bookStore.splice(bookToBeEditedIndex, 1, data);
+					bookStore.splice(bookToBeEditedIndex, 1, data);
 					addBookToPage();
 				}
 			});
@@ -66,7 +67,7 @@ $(function() {
 			url: booksUrl + "/" + getId,
 			data: bookToBeDelete,
 			success: function(data) {
-				bookStore = bookStore.splice(bookToBeDeleteIndex, 1);
+				bookStore.splice(bookToBeDeleteIndex, 1);
 				addBookToPage();
 			}
 		});
