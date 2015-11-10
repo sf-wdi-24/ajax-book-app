@@ -19,9 +19,70 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">AJAX Book App</h1>
-        <br>
-        <div id="books-list"></div>
+       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <form id="formDiv">
+          <div class="inForm">
+          <input type= "text" class="form-control" name="title" value= "" placeholder="Book Name">
+          </div>
+          <div class="inForm">
+          <input type= "text" class="form-control" name="author" value= "" placeholder="Author Name">
+          </div>
+          <div class="inForm">
+          <input type="text" class="form-control" name="image"  value= "" placeholder="Book imag">
+          </div>
+          <div class="inForm">
+          <input type="submit" id="submitButton" class="btn btn-default" placeholder="Submit">
+          </div>
+        </form>
       </div>
+
+    </div>
+    <div class="row">
+      <div class = "col-md-8 col-md-offset-3"> 
+         <div id="books-list"> 
+            <script id="booksForm" type="text/x-handelbars-template">
+            {{#each books}}
+            <div class="row book_row">
+              <div class="col-md-2 bookImg">
+                <img src={{image}}>
+              </div>
+
+              <div class="col-md-4 bookInfo">
+                <h6>Book name</h6>
+                <p>{{title}}</p>
+                <h6>Author</h6>
+                <p>{{author}}</p><br>
+              </div><br>
+              <div class="barrier"></div>
+              <div class="col-md-6">
+                <button id="edit" data_id={{_id}}><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+                <button id="delete" data_id={{_id}}><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                <form class="form2">
+                  <div class="inForm2">
+                    <input type= "text" class="form-control" name="title" value= "" placeholder="Book Name">
+                  </div>
+                  <div class="inForm2">
+                    <input type= "text" class="form-control" name="author" value= "" placeholder="Author Name">
+                  </div>
+                  <div class="inForm2">
+                    <input type="text" class="form-control" name="image"  value= "" placeholder="Book imag">
+                  </div>
+                  <div class="inForm">
+                    <input type="submit" "submitButton2" class="btn btn-default submitButton2" placeholder="Submit">
+                 </div>
+               </form>
+
+              </div>
+             </div>
+          </div>
+          {{/each}}
+          </script>
+        </div>
+      
+    </div>
     </div>
   </div>
   
