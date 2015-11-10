@@ -20,7 +20,6 @@ $(function() {
 		$booksList.append(bookHtml);
 	}
 	$.get(booksUrl, function(data) {
-		console.log(data);
 		bookStore = data.books;
 		addBookToPage();
 	}); 
@@ -35,25 +34,26 @@ $(function() {
 	});
 	$("#books-list").on("click", ".edit-button", function(){
 		var getId = $(this).attr("id");
-		console.log(getId);
+		var bookToBeEdited = bookStore.filter(function(book){
+			return book._id == getId;
+		})[0];
+		var bookToBeEditedIndex = bookStore.indexOf(bookToBeEdited);
 		var $editForm = $("#form"+ getId);
-		console.log(booksUrl + "/" + getId + "/");
 		$editForm.toggle();
 		$("#books-list").on("submit", $editForm, function(event) {
 			event.preventDefault();
-			var edittedBook = $editForm.serialize();
+			var editedBook = $editForm.serialize();
 			document.getElementById("form" + getId).reset();
 			$.ajax({
 				type: "PUT",
-				url: booksUrl + "/" + getId + "/",
-				data: edittedBook,
-				sucess: function(data) {
-					bookStore.push(data);
+				url: booksUrl + "/" + getId,
+				data: editedBook,
+				success: function(data) {
+					bookStore.splice(bookToBeEditedIndex,1,data);
 					addBookToPage();
 				}
 			});
 		});
-
 	});
 
 });
