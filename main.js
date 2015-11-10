@@ -57,11 +57,11 @@ $(function() {
     });
   }
 
-  function updateBook(book_id, title, author, image, releaseDate){
+  function updateBook(book_id, updatedBook){
     $.ajax({
       type: "PUT",
       url: 'https://super-crud.herokuapp.com/books/' + book_id,
-      data: {title: title, author: author, image: image, releaseDate: releaseDate},
+      data: updatedBook,
       success: function (data) {
         console.log("UPDATED!");
         $('#books-list').empty();
@@ -96,18 +96,16 @@ $(function() {
 
   $('#books-list').on('click', '#delete-book-form', function (e) {
     e.preventDefault();
-    var id = e.currentTarget.attributes[2].nodeValue;
-    deleteBook(id);
+    var book_id = $(this).closest('#book-row').attr('data-id');
+    console.log(book_id);
+    deleteBook(book_id);
   });
 
   $('#books-list').on('submit', '.update-book', function(e) {
     e.preventDefault();
-    var title = $('#updateTitle').val();
-    var author = $('#updateAuthor').val();
-    var image = $('#updateImage').val();
-    var releaseDate = $('#updateReleaseDate').val();
-    var book_id = $('#book-row')[0].attributes[2].nodeValue;
-    updateBook(book_id, title, author, image, releaseDate);
+    var updatedBook = $(this).serialize();
+    var book_id = $(this).closest('#book-row').attr('data-id');
+    updateBook(book_id, updatedBook);
     $('#update-' + book_id).collapse('toggle');
   });
 
