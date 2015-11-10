@@ -1,40 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-
-  <!-- set viewport to device width to make site responsive -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- bootstrap css -->
-  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-  <!-- custom styles -->
-  <link rel="stylesheet" type="text/css" href="main.css">
-
-  <title>AJAX Book App</title>
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h1 class="text-center">AJAX Book App</h1>
-        <br>
-        <div id="books-list"></div>
+  <head>
+    <meta charset="UTF-8">
+    <!-- set viewport to device width to make site responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap css -->
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- custom styles -->
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>AJAX Book App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h1 class="text-center">AJAX Book App</h1>
+          <br>
+            <form id="bookForm">
+            <div class="form-group">
+              <input type="text" class="form-control" name="title" placeholder="Title"><!-- <br /> -->
+              <input type="text" class="form-control" name="author" placeholder="Author"><!-- <br /> -->
+              <input type="text" class="form-control" name="image" placeholder="Image"><!-- <br /> -->
+              <input type="text" class="form-control" name="releaseDate" placeholder="Release date"><!-- <br /> -->
+              <input type="submit" class="btn btn-info btn-block" id="submitBook">
+            </div>
+            </form>
+          <br />
+          <div id="books-list">
+            <script id="template" type="text/x-handlebars-template">
+            {{#each book}}
+            <div class="row">
+              <div class="col-md-5">
+                <img src="{{image}}" class="img-responsive">
+              </div>
+              <div class="col-md-5">
+                <h3>{{title}}</h3>
+                Author : {{author}}<br />
+                Released : {{releaseDate}}<br />
+                <div class="btn-group">
+                  <span class="glyphicon glyphicon-pencil btn btn-info" id="{{_id}}"> Edit</span>
+                  
+                  <form class="editDrop" id="form{{_id}}">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="title" placeholder="Title">
+                      <input type="text" class="form-control" name="author" placeholder="Author">
+                      <input type="text" class="form-control" name="image" placeholder="Image">
+                      <input type="text" class="form-control" name="releaseDate" placeholder="Release date">
+                      <input type="submit" class="btn btn-info btn-block submitEdit" id="editBook{{_id}}">
+                    </div>
+                  </form>
+                  <span class="glyphicon glyphicon-remove btn btn-info" id="deleteBtn" aria-hidden="true"> Delete</span>
+                </div>
+              </div>
+            </div>
+            <br />
+            {{/each}}
+            </script>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <!-- jquery -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-  <!-- bootstrap js -->
-  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-  <!-- handlebars -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
-
-  <!-- custom script -->
-  <script type="text/javascript" src="main.js"></script>
-</body>
+    
+    <!-- jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- handlebars -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+    <!-- custom script -->
+    <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
