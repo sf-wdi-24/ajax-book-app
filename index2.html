@@ -16,7 +16,6 @@
         <div class="col-md-6 col-md-offset-3">
           <h1 class="text-center">AJAX Book App</h1>
           <br>
-          <button class="btn btn-primary" id="showbooks">Show all books</button>
           <form class="form-group" id="book-form">
             <input type="text" name="title" placeholder="Title">
             <input type="text" name="author" placeholder="Author">
@@ -28,14 +27,12 @@
           <img class="images" src="{{image}}"/>
           <input type="submit" value="Edit" class="btn btn-primary">
           <input type="submit" value="Delete" class="btn btn-primary">
-          <form class="form-group" id="{{_id}}">
-            <input type="text" value="Author">
-            <input type="text" value="Title">
-            <button type="submit" class="btn btn-primary book-edit" id="book-edit">Edit this Book</button>
-          </form>
           {{/each}}
           </script>
-          <div id="bookslist"></div>
+          <!-- <div id="bookslist">
+            <input type="submit" value="Edit" class="btn btn-primary">
+            <input type="submit" value="Delete" class="btn btn-primary"> -->
+          </div>
         </div>
       </div>
     </div>
