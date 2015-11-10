@@ -20,7 +20,28 @@
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">AJAX Book App</h1>
         <br>
+        <form class="form-group" id="create-book">
+          <input type="text" name="title" class="form-control" value="Title">
+          <input type="text" name="author" class="form-control" value="Author">
+          <input type="text" name="image" class="form-control" value="Image">
+          <input type="text" name="release_date" class="form-control" value="Release Date">
+          <input type="submit" value="Create new book" class="btn btn-info btn-block">
+        </form>
         <div id="books-list"></div>
+        <script id="books-template" type="text/x-handlebars-template">
+          <div class="entry">
+            <div class="books">
+            {{#each allBooks}}
+              <div><img src="{{image}}"></div>
+              <h2>{{title}}</h2>
+              <div>{{author}}</div>
+              <div>{{releaseDate}}</div>
+              <button type="button" class="btn btn-default btn-xs edit" data-book-id="{{_id}}">Edit</button>
+              <button type="button" class="btn btn-default btn-xs delete" data-book-id="{{_id}}">Delete</button>
+            {{/each}}
+            </div>
+          </div>
+        </script>
       </div>
     </div>
   </div>
