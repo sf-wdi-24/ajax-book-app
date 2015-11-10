@@ -5,9 +5,9 @@ $(function() {
 	console.log('JS is loaded!');
 
 	// your code here
+
 	var booksUrl = "https://super-crud.herokuapp.com/books";
 	var bookStore = [];
-	console.log(bookStore);
 	var $booksList = $('#books-list');
 	
 	//compile handlebars template
@@ -20,6 +20,7 @@ $(function() {
 		$booksList.append(bookHtml);
 	}
 	$.get(booksUrl, function(data) {
+		console.log(data);
 		bookStore = data.books;
 		addBookToPage();
 	}); 
