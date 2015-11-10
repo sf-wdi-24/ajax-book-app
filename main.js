@@ -38,15 +38,34 @@ $(function() {
   });
   
   //Update book list
-  $('#books-list').on("click","#edit", function(event){
+  $('#books-list').on("submit","#update-book", function(event){
   	event.preventDefault();
-  	console.log("editbuttonclicked");
-  	console.log(data_id.closest());
+  	var book_id1 = $(this).attr("data_id");
+  	console.log($(this).attr("data_id1"));
+  	var updateBook = $('#update-book').serialize();
+  	console.log(updateBook);
+  	console.log("https://super-crud.herokuapp.com/books/"+book_id+"/");
+  	$.ajax({
+  		type: "PUT",
+  		url: "https://super-crud.herokuapp.com/books/"+book_id+"/",
+  		data: {title: "Static", author:"Perm", releaseDate: "20", image:"https://cloud.githubusercontent.com/assets/7833470/10892121/866d27bc-8156-11e5-9810-62a875e36c27.jpg"}
+  	});
   });
 
   //Delete Book from List
   $('#books-list').on("click","#delete", function(event){
   	console.log("deletebuttonclicked");
+  	var book_id = ($(this).attr("data_id"));
+  	$.ajax({
+  		type: "DELETE",
+  		url: "https://super-crud.herokuapp.com/books/"+book_id+"/",
+  		success: function(data){
+  			console.log("Book has been removed");
+  		},
+  		error: function (error) {
+    		console.error(error);
+  		}	
+  	});
   });
 });
 
