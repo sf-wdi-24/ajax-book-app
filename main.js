@@ -71,6 +71,7 @@ $submit_book.on('submit', function(event) {
 	$('body').on('submit', '.edit_book_form', function(event) {
 		event.preventDefault();
 		var editFormId = $(this).attr('id');
+		console.log(editFormId);
 		var updatedBook = $(this).serialize();
 
 		//ajax put request
