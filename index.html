@@ -20,7 +20,14 @@
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">AJAX Book App</h1>
         <br>
-        <div id="books-list"></div>
+        <div id="books-list">
+            <script id="books-template" type="text/x-handlebars-template">
+              {{#each books}}
+                <p>{{title}}by{{author}}</p>
+              {{/each}}
+            </script>
+        </div>
+
       </div>
     </div>
   </div>
