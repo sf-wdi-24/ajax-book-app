@@ -56,29 +56,32 @@ $("#formDiv").submit(function(event){
  	});	
  });
 
- // $("#books-list").on("click", "#edit", function(event){
- // 	$(".form2").toggle();
- // });
-//  	var book_id_edit = $(this).attr("data_id");
-// 	$(this).on("submit", ".form2", function(event){
-// 	event.preventDefault();
-// 	var updatedBook = $(this).serialize();
-// 	console.log(updatedBook);
-// 	$.ajax({
-// 			type: "PUT",
-// 			url: "https://super-crud.herokuapp.com/books/" + book_id_edit,
-// 			data: updatedBook,
-//  			success: function(data){
-//  				console.log("yay EDITED");
-//  				create_list();
-//  			},
-//  			error: function(error){
-//  				console.log(error);
-//  			}
-//  	});	
-//  });
+ $("#books-list").on("click", "#edit", function(event){
+ 	event.preventDefault();
+ 	$(".form2").toggle();
+ 	element_id = $(this).attr("data_id");
+ 	
+		$(".form2").on("submit", function(event){
+		event.preventDefault();
+		var book_id_edit = element_id;
+		var updatedBook = $(this).serialize();
 
-// });
+		$.ajax({
+				type: "PUT",
+				url: "https://super-crud.herokuapp.com/books/" + book_id_edit,
+				data: updatedBook,
+	 			success: function(data){
+	 				console.log("yay EDITED");
+	 				$("#books-list").empty();
+	 				create_list();
+	 			},
+	 			error: function(error){
+	 				console.log(error);
+	 			}
+	 		});
+ 	});	
+});
+
  create_list();
 
 });
