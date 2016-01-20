@@ -1,1 +1,48 @@
 /* put custom styles in this file */
+.bookImg>img{
+	height: 90px;
+	width: 90px;
+	margin-top: 10px;
+	
+}
+.bookImg{
+display: inline-block;
+}
+
+
+#bookInfo{
+	display: inline-block;
+}
+.inForm{
+	margin:5px;
+}
+.btn{
+	width: 546px;
+	background-color: gray;
+}
+#hidden_id{
+	display: none;
+}
+
+body{
+	background-color: #BFB6B6;
+}
+
+.form2{
+	display: none;
+}
+.inForm2{
+	height: 34px;
+	width: 206px;
+}
+.submitButton2{
+	height: 34px;
+	width: 206px;
+	margin-left: -5px;
+}
+.barrier{
+	border: 2px solid white;
+	margin-top: -19px;
+	width: 30px;
+	width: 573px;
+}
