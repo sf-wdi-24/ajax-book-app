@@ -1,40 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-
-  <!-- set viewport to device width to make site responsive -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- bootstrap css -->
-  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-  <!-- custom styles -->
-  <link rel="stylesheet" type="text/css" href="main.css">
-
-  <title>AJAX Book App</title>
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h1 class="text-center">AJAX Book App</h1>
-        <br>
-        <div id="books-list"></div>
+  <head>
+    <meta charset="UTF-8">
+    <!-- set viewport to device width to make site responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap css -->
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- custom styles -->
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>AJAX Book App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h1 class="text-center">AJAX Book App</h1>
+          <br>
+          <form role="form" id="bookForm">
+            <div class="form-group">
+              <input type="text" class="form-control" name="title" placeholder="Book title">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="author" placeholder="Author name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="image" placeholder="Book cover image url">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="releaseDate" placeholder="Releae date">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-warning btn-block" id="save" value = "Save">
+            </div>
+          </form>
+          <hr>
+          <div id="books-list">
+            <script id="books-template" type="text/x-handlebars-template">
+            {{#each books}}
+            <div class="row">
+              <div class="col-md-4">
+                <img src="{{image}}" class="img-responsive">
+              </div>
+              <div class="col-md-8">
+                <div id="description">
+                  <h4>{{title}}</h4>
+                  <p><b>Author:</b> {{author}}</p>
+                  <p><b>Released:</b> {{releaseDate}}</p>
+                  <div class="edit-holder">
+                    <button type="button" class="btn btn-default edit-button" aria-label="Left Align" id="{{_id}}">
+                      <span class="glyphicon glyphicon-edit glyphicon-align-left" aria-hidden="true"></span> Edit
+                    </button>
+                    <button type="button" class="btn btn-default" aria-label="Left Align" id="delete">
+                      <span class="glyphicon glyphicon-remove-circle glyphicon-align-left" aria-hidden="true"></span> Remove
+                    </button>
+                    <form role="form" class="edit-form" id="form{{_id}}">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="title" placeholder="Book title">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="author" placeholder="Author name">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="image" placeholder="Book cover image url">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="releaseDate" placeholder="Releae date">
+                      </div>
+                      <div class="form-group">
+                        <input type="submit" class="btn btn-warning btn-block" id="save" value = "Edit">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            {{/each}}
+            </script>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <!-- jquery -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-  <!-- bootstrap js -->
-  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-  <!-- handlebars -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
-
-  <!-- custom script -->
-  <script type="text/javascript" src="main.js"></script>
-</body>
+    
+    <!-- jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- handlebars -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+    <!-- custom script -->
+    <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
